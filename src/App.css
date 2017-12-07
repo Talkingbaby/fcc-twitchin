@@ -1,0 +1,10 @@
+div.columns {
+  min-height: 90vh;
+}
+aside {
+  border-right: 1px solid purple;
+  /* height: 100%; */
+}
+.footer {
+  padding: 2rem 1.5rem;
+}
