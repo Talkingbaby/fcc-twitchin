@@ -39,7 +39,7 @@ class App extends Component {
         <Navbar />
         <div className="columns">
           <AsideNav />
-          <ChannelSection />
+          <ChannelSection channels={this.state.channel}/>
         </div>
         <Footer />
       </div>
