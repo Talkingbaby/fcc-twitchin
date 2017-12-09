@@ -15,7 +15,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      channel: []
+      channel: [],
+      streams: []
     };
   }
   componentDidMount() {
@@ -31,6 +32,19 @@ class App extends Component {
         console.log('after state: ', this.state);
       }
      });
+
+     $.ajax({
+      type: 'GET',
+      url: 'https://api.twitch.tv/kraken/streams',
+      headers: {
+        'Client-ID': secrets.id.CLIENT_ID
+      },
+      success: (data) => {
+        console.log(data);
+        this.setState({streams: data.streams});
+        console.log('after state streams: ', this.state);
+      }
+     });
   }
 
   render() {
@@ -39,7 +53,7 @@ class App extends Component {
         <Navbar />
         <div className="columns">
           <AsideNav />
-          <ChannelSection channels={this.state.channel}/>
+          <ChannelSection info={this.state.channel}/>
         </div>
         <Footer />
       </div>
